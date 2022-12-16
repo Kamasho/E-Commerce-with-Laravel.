@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Quantity</label>
-                    <input type="number" class="form-control" value="{{ $products->qty }}" name="qty">
+                    <input type="number" class="form-control" value="{{ $products->quantity }}" name="quantity">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Status</label>
