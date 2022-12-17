@@ -30,4 +30,16 @@ class FontEndController extends Controller
             return redirect('/')->with('status','Slug Does Not Exist');
         }
     }
+    public function viewProduct($category_slug, $prod_slug){
+        if(category::where('slug', $category_slug)->exists()){
+            if(product::where('slug', $prod_slug)->exists()){
+                $products = product::where('slug', $prod_slug)->first();
+                return view('fontend.product.view', compact('products'));
+            }else{
+                return redirect('/')->with('status', "The link was broken");
+            }
+        }else{
+            return redirect('/')->with('status', "No such category found!");
+        }
+    }
 }
