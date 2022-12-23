@@ -46,25 +46,58 @@
                     </div>
                     <div class="col-md-10">
                         <br/>
-                        <button type="button" class="btn btn-success me-3 float-start">Add to Wishlist</button>
-                        <button type="button" class="btn btn-primary me-3 float-start addToCartBtn">Add to Cart</button>
+                        <button type="button" class="btn btn-success me-3 float-start">Add to Wishlist <i class="fa fa-heart" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-primary me-3 float-start addToCartBtn">Add to Cart<i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-   </div>
-   <div class="mt-4">
+        <div class="col-md-12">
+    <hr>
     <h3>Descriptions</h3>
-    <h6>{{$products->description}}</h6>
+    <p  class="mt-3">
+        {!! $products->description !!}
+    </p>
+   </div>
+    </div>
    </div>
 </div>
 
 @endsection
 
 @section('scripts')
-    <script>
+    <script type="text/javascript">
         $(document).ready(function(){
+
+            //Add to Carts
+            $('.addToCartBtn').click(function(e){
+                e.preventDefault();
+
+                var product_id = $(this).closest('.product_data').find('.product_id').val();
+                var product_quantity = $(this).closest('.product_data').find('.quantity-input').val();
+
+                // alert(product_id);
+                // alert(product_quantity);
+
+                $.ajaxSetup({
+                    header: {
+                        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    method: "POST",
+                    url: "/add-to-cart", 
+                    data: {
+                        'product_id' : product_id,
+                        'product_quantity' : product_quantity
+                    },
+                    success: function(response){
+                        alert(response.status);
+                    }
+                });
+            });
+
             //for increment product
             $('.increment-btn').click(function(e){
                 e.preventDefault();
@@ -87,34 +120,6 @@
                     value--;
                     $('.quantity-input').val(value);
                 }
-            });
-
-            //Add to Carts
-            $('.addToCartBtn').click(function(e){
-                e.preventDefault();
-
-                var product_id = $(this).closest('.product_data').find('.product_id').val();
-                var product_quantity = $(this).closest('.product_data').find('.quantity-input').val();
-
-                // alert(product_id);
-                // alert(product_quantity);
-                $.ajaxSetup({
-                    header: {
-                        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                $.ajax({
-                    method: "POST",
-                    url: "/add-to-cart", 
-                    data: {
-                        'product_id' : product_id,
-                        'product_quantity' : product_quantity
-                    },
-                    success: function(response){
-                        alert(response.status);
-                    }
-                });
             });
         });
     </script>

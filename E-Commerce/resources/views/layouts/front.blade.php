@@ -6,21 +6,33 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
 
     <title>@yield('title')</title>
 
       <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  
   <!-- CSS Files -->
-    <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('fontend/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('fontend/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <link href="{{ asset('fontend/css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('fontend/css/owl.theme.default.min.css') }}" rel="stylesheet">
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
       a{
         text-decoration: none !important;
+        color: #000 !important;
       }
     </style>
 
